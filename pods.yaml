@@ -1,15 +1,15 @@
 
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
   name: webapp
 spec:
+  # minReadySeconds: 30
   selector:
     matchLabels:
       app: webapp
-  replicas: 1
-
-  template:
+  replicas: 2
+  template: # template for the pods
     metadata:
       labels:
         app: webapp
@@ -20,7 +20,7 @@ spec:
 
 ---
 apiVersion: v1
-kind: Pod 
+kind: Pod
 metadata:
   name: queue
   labels:
